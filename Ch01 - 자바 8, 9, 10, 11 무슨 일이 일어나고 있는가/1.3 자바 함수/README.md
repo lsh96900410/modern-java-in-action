@@ -118,7 +118,7 @@ filterApples(inventory, Apple::isHeavyApple);
 > - 자바 8에서 `Function<Apple, Boolean>` 같이 구현 가능하지만, `Predicate<Apple>`이 더 표준 방식이며, `boolean-> Boolean` 변환 과정도 필요 없다.
 
 
-## 1.3.3 메서드 전달에서 람다로
+## 메서드 전달에서 람다로
 위의 코드에서 메서드를 값으로 전달하는 것은 분명 유용한 기능이다 <br>
 하지만, 만약 `isHeavyApple()`, `isGreenApple()`가 한두 번만 사용하는 메서드라면? : 매번 정의하는 것은 귀찮은 일이다.<br>
 자바 8에서는 이러한 문제를 간단하게 `람다(익명함수)`로 해결하며 코드를 구현할 수 있다.
