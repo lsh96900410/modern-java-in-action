@@ -18,7 +18,7 @@
 > <br>그렇기에 자바 8 설계자들은 이급 시민을 일급 시민으로 바꿀 수 있는 기능을 추가했다.
 
 ---
-## 메서드와 람다를 일급 시민으로
+## 1.3.1 메서드와 람다를 일급 시민으로
 
 ### 메서드 참조
 
@@ -29,14 +29,14 @@ ex) 디렉터리에서 모든 숨겨진 파일을 필터링
 
 ```java
 //자바 8 이전
-File[]hiddenFiles=new File(".").listFiles(new FileFilter(){
+File[] hiddenFiles = new File(".").listFiles(new FileFilter(){
     public boolean accept(File file){
         return file.isHidden(); // 숨겨진 파일 필터링
     }
 })
 
 //자바 8이후 메서드 참조 적용
-File[]hiddenFiles=new File(".").listFiles(File::isHidden);
+File[] hiddenFiles = new File(".").listFiles(File::isHidden);
 ```
 
 - `isHidden`이라는 함수는 준비되어 있으므로 `자바 8의 메서드 참조::`(이 메서드를 값으로 사용하라는 의미)를 이용해 listFiles에 값을 직접 전달할 수 있게 되었다.<br>
@@ -47,7 +47,7 @@ File[]hiddenFiles=new File(".").listFiles(File::isHidden);
 클래스에 직접 메서드를 정의할 수도 있지만, 이용할 수 있는 편리한 클래스나 메서드가 없을 때 새로운 람다 문법을 이용하면 `간결하게 코드를 구현`할 수 있다.<br>
 람다 문법 형식으로 구현된 프로그램을 **함수형 프로그래밍**, 즉 `함수를 일급값으로 넘겨주는 프로그램을 구현한다`라고 한다.
 
-## 코드 넘겨주기 : 예제
+## 1.3.2 코드 넘겨주기 : 예제
 
 Apple 클래스와 `getColor` 메서드가 있고, Apples 리스트를 포함하는 변수 inventory가 있다고 가정하고, 모든 녹색 사과를 선택해서 리스트를 반환하는 프로그램을 구현해보자<br>
 > 이처럼 특정 항목을 선택해서 반환하는 동작을 `필터`(filter)라고 한다.
@@ -118,7 +118,7 @@ filterApples(inventory, Apple::isHeavyApple);
 > - 자바 8에서 `Function<Apple, Boolean>` 같이 구현 가능하지만, `Predicate<Apple>`이 더 표준 방식이며, `boolean-> Boolean` 변환 과정도 필요 없다.
 
 
-## 메서드 전달에서 람다로
+## 1.3.3 메서드 전달에서 람다로
 위의 코드에서 메서드를 값으로 전달하는 것은 분명 유용한 기능이다 <br>
 하지만, 만약 `isHeavyApple()`, `isGreenApple()`가 한두 번만 사용하는 메서드라면? : 매번 정의하는 것은 귀찮은 일이다.<br>
 자바 8에서는 이러한 문제를 간단하게 `람다(익명함수)`로 해결하며 코드를 구현할 수 있다.
